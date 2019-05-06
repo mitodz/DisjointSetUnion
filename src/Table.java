@@ -1,12 +1,19 @@
 public class Table {
-    private int[] parent = new int[100000];
-    private int[] rank = new int[100000];
+    private int[] parent = new int[100001];
+    private int[] rank = new int[100001];
     private int maxTable=0;
 
-    public void makeSet (int i) {
-        if (i > maxTable) {
-            maxTable = i;
+    public Table (int quantity) {
+        for (int i = 1; i <= quantity; i++) {
+            makeSet(i);
         }
+    }
+
+    public void setRank(int i, int j) {
+        rank[i] = j;
+    }
+
+    public void makeSet (int i) {
         parent[i] = i;
         rank[i] = 0;
     }
@@ -20,6 +27,10 @@ public class Table {
 
     public int getMaxTable() {
         return maxTable;
+    }
+
+    public void setMaxTable(int maxTable) {
+        this.maxTable = maxTable;
     }
 
     public void union (int i, int j) {
